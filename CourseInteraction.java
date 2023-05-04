@@ -15,8 +15,13 @@ public class CourseInteraction extends Course implements ICheck
     
     public void TakingQuizzesAndExams()
     {
-        
+        System.out.println("Exam :\n"+exams.getExamsVector());
     }
+    public void viewMaterials()
+    {
+        System.out.println("Materials :\n"+materials.getMaterialsVector());
+    }
+
     public boolean checkCost()
     {
         if (getCourseCost() != 0)
