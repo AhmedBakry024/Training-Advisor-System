@@ -9,5 +9,6 @@ public class App {
 
         Signup signup = new Signup();
         Login login = new Login();
+        accounts.get(Login.accountIndex).EditProfile();
     }
 }
