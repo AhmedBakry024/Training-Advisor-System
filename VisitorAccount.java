@@ -15,7 +15,7 @@ public class VisitorAccount {
         System.out.println("Press 2 to change your email");
         System.out.println("Press 3 to change your password");
         System.out.println("Press 4 to change your phone number");
-        
+
         int choice = scanner.nextInt();
         if (choice == 1) {
             System.out.println("Enter new name");
@@ -43,5 +43,11 @@ public class VisitorAccount {
         }
 
     }
-}
 
+    public void viewdata() {
+        System.out.println("    Your profile"); 
+        System.out.println("    Your Name:  " + Name); 
+        System.out.println("    Your Email:  " + Email); 
+        System.out.println("    Your Phone Number:  " + phoneNum); 
+    }
+}
