@@ -9,6 +9,7 @@ public class Course
     private double courseScore;
     private double courseCost;
     private String prerequisites;
+    private static Vector<Course> coursesVector = new Vector<Course>();
     public Exams exams;
     public Materials materials;
   
@@ -41,6 +42,20 @@ public class Course
         this.courseScore = score;
         this.courseCost = cost;
     }
+    public boolean Matching(String CourseName)
+    {
+        String name ;
+        for(int i =0;i<coursesVector.size();i++)
+        {
+            name = coursesVector.get(i).getCourseName();
+            name = name.toLowerCase();
+            if(name.equals(CourseName))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 //Setters
     public void setCourseName(String name)
     {
@@ -66,7 +81,10 @@ public class Course
     {
         this.prerequisites = pre;
     }
-    
+    public void setCoursesVector(Course course)
+    {
+        this.coursesVector.add(course);
+    }
 
 //Getters
     public String getCourseName()
@@ -93,7 +111,10 @@ public class Course
     {
         return this.prerequisites;
     }
-    
+    public Vector<Course> getCoursesVector()
+    {
+        return this.coursesVector;
+    }
 
     
 
