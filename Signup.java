@@ -15,6 +15,8 @@ public class Signup {
         userInput.Email= scanner.nextLine();
         System.out.println("Enter your Password");
         userInput.Pass = scanner.nextLine();
+        System.out.println("Enter your Phone number");
+        userInput.phoneNum = scanner.nextInt();
         App.accounts.addElement(userInput);
     }
 }

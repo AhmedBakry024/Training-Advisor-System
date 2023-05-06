@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Login {
     
-    public int accountIndex = -1;
+    public static int accountIndex = -1;
 
     public Login() {
 
