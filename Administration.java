@@ -17,18 +17,28 @@ public class Administration {
         String prerequisites = input.nextLine();
         System.out.println("Enter  course cost: ");
         double cost = input.nextDouble();
-        System.out.println("Enter  course exam: ");
-        String exam = input.nextLine();
         System.out.println("Enter  course material: ");
         String material = input.nextLine();
-        course.setCoursesVector(course = new Course(name, type, ID, prerequisites, cost, exam, material));
+        System.out.println("Enter number of course exam: ");
+        int num = input.nextInt();
+        for(int i=0;i<num;i++)
+        {
+            System.out.println("Enter course exam: ");
+            String exam = input.nextLine();
+            System.out.println("Enter course exam answer: ");
+            String answer = input.nextLine();
+            course.exams.setExamsVector(exam);
+            course.exams.setAnswersVector(answer);
+        }
+        
+        Course.setCoursesVector(course = new Course(name, type, ID, prerequisites, cost, material, num));
     }
     
     public void DefiningCourse(String ID)
     {
-        for (int i = 0; i < course.getCoursesVector().size(); i++)
+        for (int i = 0; i < Course.getCoursesVector().size(); i++)
         {
-            if (course.getCoursesVector().get(i).getCourseID().equals(ID))
+            if (Course.getCoursesVector().get(i).getCourseID().equals(ID))
             {
                 System.out.println("Enter 1 to change course name or 2 to change course type or 3 to change course ID or 4 to change course prerequisites or 5 to change course cost or 6 to change course exam or 7 to change course material");
                 Scanner input = new Scanner(System.in);
@@ -38,37 +48,37 @@ public class Administration {
                     case 1:
                         System.out.println("Enter new course name: ");
                         String name = input.nextLine();
-                        course.getCoursesVector().get(i).setCourseName(name);
+                        Course.getCoursesVector().get(i).setCourseName(name);
                         break;
                     case 2:
                         System.out.println("Enter new course type: ");
                         String type = input.nextLine();
-                        course.getCoursesVector().get(i).setCourseType(type);
+                        Course.getCoursesVector().get(i).setCourseType(type);
                         break;
                     case 3:
                         System.out.println("Enter new course ID: ");
                         String id = input.nextLine();
-                        course.getCoursesVector().get(i).setCourseID(id);
+                        Course.getCoursesVector().get(i).setCourseID(id);
                         break;
                         case 4:
                         System.out.println("Enter new course prerequisites: ");
                         String prerequisites = input.nextLine();
-                        course.getCoursesVector().get(i).setPrerequisites(prerequisites);
+                        Course.getCoursesVector().get(i).setPrerequisites(prerequisites);
                         break;
                         case 5:
                         System.out.println("Enter new course cost: ");
                         double cost = input.nextDouble();
-                        course.getCoursesVector().get(i).setCourseCost(cost);
+                        Course.getCoursesVector().get(i).setCourseCost(cost);
                         break;
                         case 6:
                         System.out.println("Enter new course exam: ");
                         String exam = input.nextLine();
-                        course.getCoursesVector().get(i).exams.setExamsVector(exam);
+                        Course.getCoursesVector().get(i).exams.setExamsVector(exam);
                         break;
                         case 7:
                         System.out.println("Enter new course material: ");
                         String material = input.nextLine();
-                        course.getCoursesVector().get(i).materials.setMaterialsVector(material);
+                        Course.getCoursesVector().get(i).materials.setMaterialsVector(material);
                         break;
                         default:
                         System.out.println("Invalid choice");

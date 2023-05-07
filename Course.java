@@ -23,15 +23,15 @@ public class Course
         this.courseScore = 0;
         this.courseCost = 0;
     }
-    public Course(String name, String type, String ID,String pre, double cost,String exam,String material)
+    public Course(String name, String type, String ID,String pre, double cost,String material,int ExamsNum)
     {
         this.courseName = name;
         this.coursetype = type;
         this.courseID = ID;
         this.courseCost = cost;
         this.prerequisites = pre;
-        this.exams.setExamsVector(exam);
         this.materials.setMaterialsVector(material);
+        this.exams.setNumOfExams(ExamsNum);
     }
 
     public void setCourse(String name, String type, String ID, int score, int cost)
@@ -81,9 +81,9 @@ public class Course
     {
         this.prerequisites = pre;
     }
-    public void setCoursesVector(Course course)
+    public static void setCoursesVector(Course course)
     {
-        this.coursesVector.add(course);
+        coursesVector.add(course);
     }
 
 //Getters
@@ -111,9 +111,9 @@ public class Course
     {
         return this.prerequisites;
     }
-    public Vector<Course> getCoursesVector()
+    public static Vector<Course> getCoursesVector()
     {
-        return this.coursesVector;
+        return coursesVector;
     }
 
     
