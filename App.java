@@ -7,8 +7,9 @@ public class App {
 
     public static void main(String args[]) {
 
-        Signup signup = new Signup();
-        Login login = new Login();
-        accounts.get(Login.accountIndex).viewdata();
+        VisitorAccount user = new VisitorAccount();
+        user.Signup();
+        user.Login();
+        accounts.get(VisitorAccount.accountIndex).viewdata();
         }
 }
