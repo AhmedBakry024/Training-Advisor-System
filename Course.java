@@ -23,7 +23,7 @@ public class Course
         this.courseScore = 0;
         this.courseCost = 0;
     }
-    public Course(String name, String type, String ID,String pre, double cost,String material,int ExamsNum)
+    public Course(String name, String type, String ID,String pre, double cost,String material,String exam,String answer)
     {
         this.courseName = name;
         this.coursetype = type;
@@ -31,7 +31,8 @@ public class Course
         this.courseCost = cost;
         this.prerequisites = pre;
         this.materials.setMaterialsVector(material);
-        this.exams.setNumOfExams(ExamsNum);
+        this.exams.setExamsVector(exam);
+        this.exams.setAnswersVector(answer);
     }
 
     public void setCourse(String name, String type, String ID, int score, int cost)

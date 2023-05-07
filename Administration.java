@@ -19,19 +19,12 @@ public class Administration {
         double cost = input.nextDouble();
         System.out.println("Enter  course material: ");
         String material = input.nextLine();
-        System.out.println("Enter number of course exam: ");
-        int num = input.nextInt();
-        for(int i=0;i<num;i++)
-        {
-            System.out.println("Enter course exam: ");
+        System.out.println("Enter course exam: ");
             String exam = input.nextLine();
             System.out.println("Enter course exam answer: ");
             String answer = input.nextLine();
-            course.exams.setExamsVector(exam);
-            course.exams.setAnswersVector(answer);
-        }
         
-        Course.setCoursesVector(course = new Course(name, type, ID, prerequisites, cost, material, num));
+        Course.setCoursesVector(course = new Course(name, type, ID, prerequisites, cost, material, exam, answer));
     }
     
     public void DefiningCourse(String ID)
