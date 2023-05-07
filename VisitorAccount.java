@@ -3,11 +3,13 @@ import java.util.*;
 public class VisitorAccount {
 
     Scanner scanner = new Scanner(System.in);
+    public static int accountIndex = -1;
+
 
     public String Name = new String();
     public String Email = new String();
     public String Pass = new String();
-    public Integer phoneNum;
+    public String phoneNum;
 
     public void EditProfile() {
         System.out.println("Change Profile");
@@ -37,7 +39,7 @@ public class VisitorAccount {
         }
         if (choice == 4) {
             System.out.println("Enter new phone number");
-            Integer phoneString = scanner.nextInt();
+            String phoneString = scanner.next();
             phoneNum = phoneString;
             System.out.println("Phone number changed successfully");
         }
@@ -45,9 +47,54 @@ public class VisitorAccount {
     }
 
     public void viewdata() {
-        System.out.println("    Your profile    "); 
-        System.out.println("Your Name:  " + Name); 
-        System.out.println("Your Email:  " + Email); 
-        System.out.println("Your Phone Number:  " + phoneNum); 
+        System.out.println("    Your profile    ");
+        System.out.println("Your Name:  " + Name);
+        System.out.println("Your Email:  " + Email);
+        System.out.println("Your Phone Number:  " + phoneNum);
+    }
+
+    public void Login() {
+
+        accountIndex = -1;
+
+        System.out.println("Login Section");
+        Scanner scanner = new Scanner(System.in);
+        VisitorAccount inputLogin = new VisitorAccount();
+
+        System.out.println("Enter your Email");
+        inputLogin.Email = scanner.next();
+        System.out.println("Enter your Password");
+        inputLogin.Pass = scanner.next();
+
+        for (int i = 0; i < App.accounts.size(); i++) {
+
+            if (inputLogin.Email.equals(App.accounts.get(i).Email)
+                    && inputLogin.Pass.equals(App.accounts.get(i).Pass)) {
+                accountIndex = i;
+            }
+        }
+        if (accountIndex == -1) {
+            System.out.println("Wrong Email or password");
+        } else {
+            System.out.println(App.accounts.get(accountIndex).Name);
+        }
+    }
+    
+    public void Signup() {
+
+        System.out.println("Signup Section");
+
+        Scanner scanner = new Scanner(System.in);
+
+        VisitorAccount userInput = new VisitorAccount();
+        System.out.println("Enter your name");
+        userInput.Name = scanner.nextLine();
+        System.out.println("Enter your Email");
+        userInput.Email= scanner.nextLine();
+        System.out.println("Enter your Password");
+        userInput.Pass = scanner.nextLine();
+        System.out.println("Enter your Phone number");
+        userInput.phoneNum = scanner.next();
+        App.accounts.addElement(userInput);
     }
 }
