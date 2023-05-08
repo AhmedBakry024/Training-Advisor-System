@@ -9,7 +9,7 @@ public class App {
 
     public static void main(String args[]) {
 
-        int id;
+        String id;
         VisitorAccount user = new VisitorAccount();
         Scanner scanner = new Scanner(System.in);
         Administration admin = new Administration();
@@ -42,10 +42,14 @@ public class App {
                                     }
                                     break;
                                 case 2:
+                                    CourseSearch courseSearch = new CourseSearch();
+                                    courseSearch.SearchCourse();
+                                    
                                     break;
                                 case 3:
                                     System.out.println("Enter course ID");
-                                    id = scanner.nextInt();
+                                    id = scanner.nextLine();
+                                    id.toUpperCase();
                                     user.Enroll(id);
                                     break;
                                 case 4:
@@ -53,7 +57,8 @@ public class App {
                                     break;
                                 case 5:
                                     System.out.println("Enter course ID");
-                                    id = scanner.nextInt();
+                                    id = scanner.nextLine();
+                                    id.toUpperCase();
                                     user.Withdraw(id);
                                     break;
                                 case 6:

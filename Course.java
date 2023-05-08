@@ -23,7 +23,7 @@ public class Course {
             String answer) {
         this.courseName = name;
         this.coursetype = type;
-        this.courseID = ID;
+        this.courseID = ID.toUpperCase();
         this.courseCost = cost;
         this.prerequisites = pre;
         this.materials.setMaterialsVector(material);
@@ -61,7 +61,7 @@ public class Course {
     }
 
     public void setCourseID(String ID) {
-        this.courseID = ID;
+        this.courseID = ID.toUpperCase();
     }
 
     public void setCourseScore(Double score) {
