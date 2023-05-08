@@ -67,21 +67,16 @@ public class VisitorAccount {
         System.out.println("Enter your Password");
         inputLogin.Pass = scanner.next();
 
-        for (int i = 0; i < App.accounts.size(); i++) {
-
+        for (int i = 0; i < App.accounts.size(); i++) 
+        {
             if (inputLogin.Email.equals(App.accounts.get(i).Email)
                     && inputLogin.Pass.equals(App.accounts.get(i).Pass)) {
                 accountIndex = i;
             }
         }
-        if (accountIndex == -1) {
-            System.out.println("Wrong Email or password");
-        } else {
-            System.out.println(App.accounts.get(accountIndex).Name);
-        }
     }
     
-    public void Signup() {
+    public VisitorAccount Signup() {
 
         System.out.println("Signup Section");
         Scanner scanner = new Scanner(System.in);
@@ -95,8 +90,8 @@ public class VisitorAccount {
         userInput.Pass = scanner.nextLine();
         System.out.println("Enter your Phone number");
         userInput.phoneNum = scanner.next();
+        return userInput;
         
-        App.accounts.addElement(userInput);
     }
 
     public void Enroll(int index) {
