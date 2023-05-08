@@ -4,6 +4,11 @@ import java.util.*;
 public class Administration {
     private Course course;
 
+    public Administration() {
+        App.coursesVector.add(course = new Course("Database Systems", "Computer Science", "CS411", "CS310", 1500, "DBS", "What is the abbreviation for Database Systems? ", "DBS"));
+        App.coursesVector.add(course = new Course("Operating Systems", "Computer Science", "CS422", "CS310", 1700, "OS", "What is the abbreviation for Operating Systems", "OS"));
+    }
+    
     public void setCourse()
     {
         Scanner input = new Scanner(System.in);

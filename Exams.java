@@ -2,8 +2,8 @@ import java.util.Vector;
 
 public class Exams
 {
-    private static Vector<String> examsVector = new Vector<String>();
-    private static Vector<String> answersVector = new Vector<String>();
+    public static Vector<String> examsVector = new Vector<String>();
+    public static Vector<String> answersVector = new Vector<String>();
     
     
     //setters
