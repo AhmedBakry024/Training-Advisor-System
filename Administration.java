@@ -58,27 +58,27 @@ public class Administration {
                         String id = input.nextLine();
                         App.coursesVector.get(i).setCourseID(id);
                         break;
-                        case 4:
+                    case 4:
                         System.out.println("Enter new course prerequisites: ");
                         String prerequisites = input.nextLine();
                         App.coursesVector.get(i).setPrerequisites(prerequisites);
                         break;
-                        case 5:
+                    case 5:
                         System.out.println("Enter new course cost: ");
                         double cost = input.nextDouble();
                         App.coursesVector.get(i).setCourseCost(cost);
                         break;
-                        case 6:
+                    case 6:
                         System.out.println("Enter new course exam: ");
                         String exam = input.nextLine();
                         App.coursesVector.get(i).exams.setExamsVector(exam);
                         break;
-                        case 7:
+                    case 7:
                         System.out.println("Enter new course material: ");
                         String material = input.nextLine();
                         App.coursesVector.get(i).materials.setMaterialsVector(material);
                         break;
-                        default:
+                    default:
                         System.out.println("Invalid choice");
                 }
             }
