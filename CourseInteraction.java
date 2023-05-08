@@ -36,24 +36,38 @@ public class CourseInteraction extends Course implements ICheck {
         System.out.println("Materials :\n" + Materials.getMaterialsVector());
     }
 
-    public boolean checkCost() {
-        if (getCourseCost() != 0) {
-            // pay for course
-            return true;
-        } else {
-            // course is free
-            return false;
+    public boolean checkCost(String Id) {
+        for(int i=0;i<App.coursesVector.size();i++)
+        {
+            if(App.coursesVector.get(i).getCourseID().equals(Id))
+            {
+                if (App.coursesVector.get(i).getCourseCost() != 0) {
+                    System.out.println("You payed the course");
+                    return true;
+                } else {
+                    System.out.println("You didn't pay the course");
+                    return false;
+                }
+            }
         }
+        return false;
     }
 
-    public boolean checkScore() {
-        if (this.score >= 50) {
-            System.out.println("You passed the course");
-            return true;
-        } else {
-            System.out.println("You failed the course");
-            return false;
+    public boolean checkScore(String Id) {
+        for(int i=0;i<App.coursesVector.size();i++)
+        {
+            if(App.coursesVector.get(i).getCourseID().equals(Id))
+            {
+                if (App.coursesVector.get(i).getCourseScore() >= 50) {
+                    System.out.println("You passed the course");
+                    return true;
+                } else {
+                    System.out.println("You failed the course");
+                    return false;
+                }
+            }
         }
+        return false;
     }
 
 }

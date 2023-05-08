@@ -32,9 +32,12 @@ public class App {
                         for (;;) {
                             System.out.println("      Main menu");
                             System.out.println(
-                                    "View my courses (Press 1) \nSearch course (Press 2) \nEnroll Course (Press 3) \nEdit Profile (Press 4) \nWithdraw from a Couse (Press 5) \nView Profile (Press 6) \nSignup from another account (Press 7) \nLogin from another account (Press 8) ");
+                                    "View my courses (Press 1) \nSearch course (Press 2) \nEnroll Course (Press 3) \nEdit Profile (Press 4) \nWithdraw from a Course (Press 5) \nView Profile (Press 6) \nSignup from another account (Press 7) \nLogin from another account (Press 8) \n get certificate (Press 9) \nExit (Press 0) ");
                             choice = scanner.nextInt();
                             switch (choice) {
+                                case 0:
+                                    System.exit(0);
+                                    break;
                                 case 1:
                                     for (int i = 0; i < accounts.get(VisitorAccount.accountIndex).myCourses
                                             .size(); i++) {
@@ -78,6 +81,13 @@ public class App {
                                         System.out.println("Logged in successfully \n\n");
                                     }
                                     break;
+                                case 9:
+                                    System.out.println("Enter course ID");
+                                    id = scanner.nextLine();
+                                    id.toUpperCase();
+                                    CertificateIssuance Certificate = new CertificateIssuance();
+                                    Certificate.issueCertificate(id);
+                                    break;
                                 default:
                                     System.out.println("Invalid input");
                             }
@@ -94,7 +104,10 @@ public class App {
                             admin.setCourse();
                             break;
                         case 2:
-                            admin.DefiningCourse("0");
+                            System.out.println("Enter course ID");
+                            id = scanner.nextLine();
+                            id.toUpperCase();
+                            admin.DefiningCourse(id);
                             break;
                         default:
                             System.out.println("Invalid choice");

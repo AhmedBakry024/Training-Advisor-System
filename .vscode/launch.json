@@ -6,6 +6,13 @@
       "name": "App",
       "request": "launch",
       "mainClass": "App",
+      "projectName": "Training-Advisor-System_4643f65a"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
       "projectName": "Training-Advisor-System_c4e4a29e"
     },
     {

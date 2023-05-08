@@ -34,7 +34,7 @@ public class Course {
     public void setCourse(String name, String type, String ID, int score, int cost) {
         this.courseName = name;
         this.coursetype = type;
-        this.courseID = ID;
+        this.courseID = ID.toUpperCase();
         this.courseScore = score;
         this.courseCost = cost;
     }
