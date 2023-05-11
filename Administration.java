@@ -28,9 +28,10 @@ public class Administration {
         for (int i = 0; i < App.coursesVector.size(); i++) {
             if (App.coursesVector.get(i).getCourseID().equals(ID)) {
                 System.out.println(
-                        "Enter 1 to change course name or 2 to change course type or 3 to change course ID or 4 to change course prerequisites or 5 to change course cost or 6 to change course material");
+                        "Enter 1 to change course name  \n2 to change course type  \n3 to change course ID  \n4 to change course prerequisites  \n5 to change course cost  \n6 to change course material");
                 Scanner input = new Scanner(System.in);
                 int choice = input.nextInt();
+                input.nextLine();
                 switch (choice) {
                     case 1:
                         System.out.println("Enter new course name: ");

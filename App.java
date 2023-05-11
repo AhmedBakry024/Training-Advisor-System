@@ -11,6 +11,7 @@ public class App {
     {
         Course course;
         coursesVector.add(course = new Course("math 0", "Math", "MA12", "", 100.0, "material"));
+        coursesVector.add(course = new Course("math 1", "Math", "MA22", "math 0", 100.0, "material"));
         admins.Email = "admin";
         admins.Pass = "admin";
         String id;
@@ -40,7 +41,7 @@ public class App {
                         while (loopBreak == false) {
                             System.out.println("      Main menu");
                             System.out.println(
-                                    "View my courses (Press 1) \nSearch course (Press 2) \nEnroll Course (Press 3) \nEdit Profile (Press 4) \nWithdraw from a Course (Press 5) \nView Profile (Press 6) \nSignup from another account (Press 7) \nLogin from another account (Press 8) \n get certificate (Press 9)\nSolve quizes and exams (Press 10) \nExit to login page (Press 0) ");
+                                    "View my courses (Press 1) \nSearch course (Press 2) \nEnroll Course (Press 3) \nEdit Profile (Press 4) \nWithdraw from a Course (Press 5) \nView Profile (Press 6) \nSignup from another account (Press 7) \nLogin from another account (Press 8) \nGet certificate (Press 9)\nSolve quizzes and exams (Press 10) \nHelpdesk (Press 11) \nExit to login page (Press 0) ");
                             choice = scanner.nextInt();
                             switch (choice) {
                                 case 0:
@@ -141,12 +142,12 @@ public class App {
                                             for (int i = 0; i < accounts.get(VisitorAccount.accountIndex).myCourses
                                                     .size(); i++) {
                                                 if (accounts.get(VisitorAccount.accountIndex).myCourses
-                                                        .get(VisitorAccount.accountIndex).getCourseID().equals(id)) {
+                                                        .get(i).getCourseID().equals(id)) {
                                                     accounts.get(VisitorAccount.accountIndex).myCourses
-                                                            .get(VisitorAccount.accountIndex).exam
+                                                            .get(i).exam
                                                             .solveExam(
                                                                     accounts.get(VisitorAccount.accountIndex).myCourses
-                                                                            .get(VisitorAccount.accountIndex)
+                                                                            .get(i)
                                                                             .getCourseScore());
                                                 }
                                             }
@@ -170,6 +171,9 @@ public class App {
                                             }
                                             break;
                                     }
+                                    break;
+                                case 11:
+                                    Helpdesk help = new Helpdesk();
                                     break;
                                 default:
                                     System.out.println("Invalid input");

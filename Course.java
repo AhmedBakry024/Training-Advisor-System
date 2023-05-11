@@ -56,7 +56,7 @@ public class Course {
         name.toLowerCase();
         for (int i = 0; i < App.coursesVector.size(); i++)
         {
-            if (this.Matching(name))
+            if (App.coursesVector.get(i).courseName.matches(name))
             {
                 System.out.println("Course ID:  " + App.coursesVector.get(i).getCourseID());
                 System.out.println("Course name: " + App.coursesVector.get(i).getCourseName());
