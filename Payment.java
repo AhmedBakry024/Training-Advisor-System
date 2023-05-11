@@ -11,6 +11,7 @@ public class Payment
         System.out.println("5- Exit\n");
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
+        scanner.nextLine();
         switch(choice)
         {
             case 1:

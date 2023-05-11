@@ -10,14 +10,14 @@ public class CertificateIssuance implements ICheck {
         {
             if(App.coursesVector.get(i).getCourseID().equals(Id))
             {
-                System.out.println("Did you pay the course fees? (1) Yes    (2) No");
-                int payement = scanner.nextInt();
-                if (payement == 1) {
-                    System.out.println("You payed the course");
+                if (App.coursesVector.get(i).getCourseCost() != 0.0) {
+                    Double fee = App.coursesVector.get(i).getCourseCost();
+                    Payment payment = new Payment();
+                    payment.paymentMethod(fee);
                     return true;
                 } else {
-                    System.out.println("You didn't pay the course");
-                    return false;
+                    System.out.println("The course is already paid");
+                    return true;
                 }
             }
         }
