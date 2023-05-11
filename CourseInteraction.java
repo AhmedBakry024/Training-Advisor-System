@@ -13,21 +13,17 @@ public class CourseInteraction extends Course implements ICheck {
         return this.score;
     }
 
-    public void TakingQuizzesAndExams(String Id) {
+    public void takingExam(String Id) {
         for (int i = 0; i < App.coursesVector.size(); i++) {
             if (App.coursesVector.get(i).getCourseID().equals(Id)) {
-                System.out.println("\nExam : " + Exams.getExamsVector());
-                System.out.println("\nEnter the answer of the exam : ");
-                Scanner input = new Scanner(System.in);
-                String answer = input.nextLine();
-                answer = answer.toLowerCase();
-                if (Exams.answersVector.get(i).equals(answer)) {
-                    System.out.println("Correct answer\n");
-                    this.score += 10;
-                } else {
-                    System.out.println("Wrong answer\n");
-                }
-                setCourseScore(this.score);
+                App.coursesVector.get(i).exam.solveExam(i);
+            }
+        }
+    }
+    public void takingQuiz(String Id) {
+        for (int i = 0; i < App.coursesVector.size(); i++) {
+            if (App.coursesVector.get(i).getCourseID().equals(Id)) {
+                App.coursesVector.get(i).exam.solveQuiz(i);
             }
         }
     }

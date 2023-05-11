@@ -2,42 +2,42 @@ import java.util.Vector;
 
 public class Exams
 {
-    public static Vector<String> examsVector = new Vector<String>();
-    public static Vector<String> quizVector = new Vector<String>();
-    public static Vector<String> quizAnswersVector = new Vector<String>();
-    public static Vector<String> answersVector = new Vector<String>();
+    private boolean finalExam;
+    private boolean Quiz;
+
+    public double solveExam(double score) 
+    {
+        if (finalExam == false) 
+        {
+            finalExam = true;
+            score += 60.0;
+            System.out.println("Exam solved successfully");
+            return score;
+        }
+        System.out.println("Exam already solved");
+        return score;
+    }
+
+    public double solveQuiz(double score) 
+    {
+        if (Quiz == false) 
+        {
+            Quiz = true;
+            score = score + 40.0;
+            System.out.println("Quiz solved successfully");
+            return score;
+        }
+        System.out.println("Quiz already solved");
+        return score;
+    }
     
-    
-    //setters
-    public void setExamsVector(String exam)
-    {
-        Exams.examsVector.add(exam);
+    public boolean getExam() {
+        return finalExam;
     }
-    public void setAnswersVector(String answer)
-    {
-        Exams.answersVector.add(answer);
-    }
-
-    public void setQuizzesVector(String exam)
-    {
-        Exams.examsVector.add(exam);
-    }
-    public void setQuizAnswersVector(String answer)
-    {
-        Exams.answersVector.add(answer);
-    }
-   
-    //getters
-    public static Vector<String> getExamsVector()
-    {
-        return examsVector;
-    }
-    public static Vector<String> getAnswersVector()
-    {
-        return answersVector;
+    public boolean getQuiz() {
+        return Quiz;
     }
 
 
-   
 }
 

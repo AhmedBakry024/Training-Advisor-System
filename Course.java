@@ -1,4 +1,4 @@
-import java.util.Vector;
+import java.util.*;
 
 public class Course {
 
@@ -7,8 +7,8 @@ public class Course {
     private String courseID;
     private double courseScore;
     private double courseCost;
-    private Vector<String> prerequisites = new Vector<>();
-    public Exams exams;
+    private String prerequisite = new String();
+    public Exams exam = new Exams();
     public Materials materials;
 
     public Course() {
@@ -19,12 +19,12 @@ public class Course {
         this.courseCost = 0;
     }
 
-    public Course(String name, String type, String ID, Vector<String> pre, double cost, String material) {
+    public Course(String name, String type, String ID, String pre, double cost, String material) {
         courseName = name;
         coursetype = type;
         courseID = ID.toUpperCase();
         courseCost = cost;
-        prerequisites = pre;
+        prerequisite = pre;
         materials.materialsVector.add(material);
     }
 
@@ -46,6 +46,32 @@ public class Course {
             }
         }
         return false;
+    }
+    public void SearchCourse()
+    {
+        String name = new String();
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter course name: ");
+        name = input.nextLine();
+        name.toLowerCase();
+        for (int i = 0; i < App.coursesVector.size(); i++)
+        {
+            if (this.Matching(name))
+            {
+                System.out.println("Course ID:  " + App.coursesVector.get(i).getCourseID());
+                System.out.println("Course name: " + App.coursesVector.get(i).getCourseName());
+                System.out.println("Course type: " + App.coursesVector.get(i).getCourseType());
+                System.out.println("Course prerequisites: " + App.coursesVector.get(i).getPrerequisites());
+                System.out.println("Course cost: " + App.coursesVector.get(i).getCourseCost());
+                System.out.println("Do you want to enroll in this course? Pass 1 for yes and 2 for no");
+                int choice = input.nextInt();
+                if (choice == 1)
+                {
+                    App.accounts.get(VisitorAccount.accountIndex).Enroll(App.coursesVector.get(i).getCourseID());
+                }
+
+            }
+        }
     }
 
     //Setters
@@ -70,7 +96,7 @@ public class Course {
     }
 
     public void setPrerequisites(String pre) {
-        prerequisites.add(pre);
+        prerequisite = pre;
     }
 
     //Getters
@@ -94,12 +120,24 @@ public class Course {
         return courseCost;
     }
 
-    public Vector<String> getPrerequisites() {
-        return prerequisites;
+    public String getPrerequisites() {
+        return prerequisite;
     }
 
     public void progressTracking() {
 
         System.out.println("You finished " + courseScore + " % of the course");
+        if (exam.getExam()) {
+            System.out.println("You finished the course exam");
+        }
+        else if (!exam.getExam()) {
+            System.out.println("You didn't finish the course exam");
+        }
+        if (exam.getQuiz()) {
+            System.out.println("You finished the course quiz");
+        }
+        else if (!exam.getQuiz()) {
+            System.out.println("You didn't finish the course quiz");
+        }
     }
 }
