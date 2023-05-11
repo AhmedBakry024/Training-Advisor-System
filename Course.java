@@ -7,7 +7,7 @@ public class Course {
     private String courseID;
     private double courseScore;
     private double courseCost;
-    private String prerequisites;
+    private Vector<String> prerequisites = new Vector<>();
     public Exams exams;
     public Materials materials;
 
@@ -19,16 +19,13 @@ public class Course {
         this.courseCost = 0;
     }
 
-    public Course(String name, String type, String ID, String pre, double cost, String material, String exam,
-            String answer) {
-        this.courseName = name;
-        this.coursetype = type;
-        this.courseID = ID.toUpperCase();
-        this.courseCost = cost;
-        this.prerequisites = pre;
-        this.materials.setMaterialsVector(material);
-        this.exams.setExamsVector(exam);
-        this.exams.setAnswersVector(answer);
+    public Course(String name, String type, String ID, Vector<String> pre, double cost, String material) {
+        courseName = name;
+        coursetype = type;
+        courseID = ID.toUpperCase();
+        courseCost = cost;
+        prerequisites = pre;
+        materials.materialsVector.add(material);
     }
 
     public void setCourse(String name, String type, String ID, int score, int cost) {
@@ -53,52 +50,52 @@ public class Course {
 
     //Setters
     public void setCourseName(String name) {
-        this.courseName = name;
+        courseName = name;
     }
 
     public void setCourseType(String type) {
-        this.coursetype = type;
+        coursetype = type;
     }
 
     public void setCourseID(String ID) {
-        this.courseID = ID.toUpperCase();
+        courseID = ID.toUpperCase();
     }
 
     public void setCourseScore(Double score) {
-        this.courseScore = score;
+        courseScore = score;
     }
 
     public void setCourseCost(Double cost) {
-        this.courseCost = cost;
+        courseCost = cost;
     }
 
     public void setPrerequisites(String pre) {
-        this.prerequisites = pre;
+        prerequisites.add(pre);
     }
 
     //Getters
     public String getCourseName() {
-        return this.courseName;
+        return courseName;
     }
 
     public String getCourseType() {
-        return this.coursetype;
+        return coursetype;
     }
 
     public String getCourseID() {
-        return this.courseID;
+        return courseID;
     }
 
     public double getCourseScore() {
-        return this.courseScore;
+        return courseScore;
     }
 
     public double getCourseCost() {
-        return this.courseCost;
+        return courseCost;
     }
 
-    public String getPrerequisites() {
-        return this.prerequisites;
+    public Vector<String> getPrerequisites() {
+        return prerequisites;
     }
 
     public void progressTracking() {

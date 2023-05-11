@@ -7,50 +7,65 @@ public class App {
     public static Vector<Course> coursesVector = new Vector<Course>();
     
 
-    public static void main(String args[]) {
+    public static void main(String args[]) 
+    {
 
         String id;
         VisitorAccount user = new VisitorAccount();
         Scanner scanner = new Scanner(System.in);
         Administration admin = new Administration();
+        boolean loopBreak = false;
         int choice;
-        System.out.println("         Welcome to Training Advisor");
-        System.out.println("Press 1 to Signup as a user, 2 to signup as an administrator");
-        choice = scanner.nextInt();
-        
+        //admin.setCourse();
+        for (;;) 
+        {
+            System.out.println("         Welcome to Training Advisor");
+            System.out.println("Press 1 to Signup as a user, 2 to signup as an administrator and 3 to exit");
+            choice = scanner.nextInt();
+
             switch (choice) {
                 case 1:
                     accounts.add(user.Signup());
                     System.out.println("Signed up Successfully");
                     System.out.println();
                     user.Login();
+                    loopBreak = false;
+
                     if (VisitorAccount.accountIndex == -1) {
                         System.out.println("Wrong Email or password");
-                    }
-                    else {
+                    } else {
                         System.out.println("Logged in successfully \n\n");
-                        for (;;) {
+                        while (loopBreak == false) {
                             System.out.println("      Main menu");
                             System.out.println(
-                                    "View my courses (Press 1) \nSearch course (Press 2) \nEnroll Course (Press 3) \nEdit Profile (Press 4) \nWithdraw from a Course (Press 5) \nView Profile (Press 6) \nSignup from another account (Press 7) \nLogin from another account (Press 8) \n get certificate (Press 9) \nExit (Press 0) ");
+                                    "View my courses (Press 1) \nSearch course (Press 2) \nEnroll Course (Press 3) \nEdit Profile (Press 4) \nWithdraw from a Course (Press 5) \nView Profile (Press 6) \nSignup from another account (Press 7) \nLogin from another account (Press 8) \n get certificate (Press 9) \nExit to login page (Press 0) ");
                             choice = scanner.nextInt();
                             switch (choice) {
                                 case 0:
-                                    System.exit(0);
+                                    loopBreak = true;
                                     break;
                                 case 1:
-                                    for (int i = 0; i < accounts.get(VisitorAccount.accountIndex).myCourses
-                                            .size(); i++) {
-                                        System.out.println(accounts.get(VisitorAccount.accountIndex).myCourses.get(i).getCourseName());
+                                    if (accounts.get(VisitorAccount.accountIndex).myCourses.size() < 1) 
+                                    {
+                                        System.out.println("\nNo Registered courses\n\n");
+                                    }
+                                    else {
+                                        for (int i = 0; i < accounts.get(VisitorAccount.accountIndex).myCourses
+                                                .size(); i++) {
+                                            System.out
+                                                    .println(accounts.get(VisitorAccount.accountIndex).myCourses.get(i)
+                                                            .getCourseName());
+                                        }
                                     }
                                     break;
                                 case 2:
                                     CourseSearch courseSearch = new CourseSearch();
                                     courseSearch.SearchCourse();
-                                    
+
                                     break;
                                 case 3:
                                     System.out.println("Enter course ID");
+                                    scanner.nextLine();
                                     id = scanner.nextLine();
                                     id.toUpperCase();
                                     user.Enroll(id);
@@ -60,6 +75,7 @@ public class App {
                                     break;
                                 case 5:
                                     System.out.println("Enter course ID");
+                                    scanner.nextLine();
                                     id = scanner.nextLine();
                                     id.toUpperCase();
                                     user.Withdraw(id);
@@ -76,13 +92,13 @@ public class App {
                                     user.Login();
                                     if (VisitorAccount.accountIndex == -1) {
                                         System.out.println("Wrong Email or password");
-                                    }
-                                    else {
+                                    } else {
                                         System.out.println("Logged in successfully \n\n");
                                     }
                                     break;
                                 case 9:
                                     System.out.println("Enter course ID");
+                                    scanner.nextLine();
                                     id = scanner.nextLine();
                                     id.toUpperCase();
                                     CertificateIssuance Certificate = new CertificateIssuance();
@@ -95,29 +111,41 @@ public class App {
                     }
                     break;
                 case 2:
+                    loopBreak = false;
                     admins.add(user.Signup());
                     System.out.println("Signed up successfully");
-                    System.out.println("Press 1 to set course and 2 to Edit course");
-                    choice = scanner.nextInt();
-                    switch (choice) {
-                        case 1:
-                            admin.setCourse();
-                            break;
-                        case 2:
-                            System.out.println("Enter course ID");
-                            id = scanner.nextLine();
-                            id.toUpperCase();
-                            admin.DefiningCourse(id);
-                            break;
-                        default:
-                            System.out.println("Invalid choice");
+                    while (loopBreak == false) {
+                        System.out.println(
+                                "Set course (Press 1) \nEdit course (Press 2) \nDelete Course(Press 3) \nExit to main menu (Press 0)");
+                        choice = scanner.nextInt();
+                        switch (choice) {
+                            case 1:
+                                admin.setCourse();
+                                break;
+                            case 2:
+                                System.out.println("Enter course ID");
+                                id = scanner.nextLine();
+                                id.toUpperCase();
+                                admin.DefiningCourse(id);
+                                break;
+                            case 3:
+                                System.out.println("Enter course ID");
+                                id = scanner.nextLine();
+                                id.toUpperCase();
+                                admin.deleteCourse(id);
+                            case 0:
+                                loopBreak = true;
+                                break;
+                            default:
+                                System.out.println("Invalid choice");
+                        }
                     }
                     break;
+                case 3:
+                    System.exit(0);
                 default:
-                    System.out.println("Invalid input");    
-
-                    
+                    System.out.println("Invalid input");
             }
-        
+        }
     }
 }

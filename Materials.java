@@ -2,11 +2,11 @@ import java.util.Vector;
 
 public class Materials 
 {
-    private static Vector<String> materialsVector = new Vector<String>();
+    public static Vector<String> materialsVector = new Vector<String>();
     //setters
     public void setMaterialsVector(String material)
     {
-        this.materialsVector.add(material);
+        materialsVector.add(material);
     }
     //getters
     public static Vector<String> getMaterialsVector()

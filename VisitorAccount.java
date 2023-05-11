@@ -107,9 +107,9 @@ public class VisitorAccount {
     }
 
     public void Withdraw(String id) {
-        for(int i = 0; i < myCourses.size(); i++)
+        for(int i = 0; i < App.accounts.get(VisitorAccount.accountIndex).myCourses.size(); i++)
         {
-            if(myCourses.get(i).getCourseID().equals(id))
+            if(App.accounts.get(VisitorAccount.accountIndex).myCourses.get(VisitorAccount.accountIndex).getCourseID().equals(id))
             {
                 App.accounts.get(VisitorAccount.accountIndex).myCourses.remove(i);
                 System.out.println("Course successfully withdrawn");

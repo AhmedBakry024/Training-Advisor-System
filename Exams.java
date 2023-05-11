@@ -3,6 +3,8 @@ import java.util.Vector;
 public class Exams
 {
     public static Vector<String> examsVector = new Vector<String>();
+    public static Vector<String> quizVector = new Vector<String>();
+    public static Vector<String> quizAnswersVector = new Vector<String>();
     public static Vector<String> answersVector = new Vector<String>();
     
     
@@ -12,6 +14,15 @@ public class Exams
         Exams.examsVector.add(exam);
     }
     public void setAnswersVector(String answer)
+    {
+        Exams.answersVector.add(answer);
+    }
+
+    public void setQuizzesVector(String exam)
+    {
+        Exams.examsVector.add(exam);
+    }
+    public void setQuizAnswersVector(String answer)
     {
         Exams.answersVector.add(answer);
     }
@@ -25,5 +36,8 @@ public class Exams
     {
         return answersVector;
     }
+
+
    
 }
+
