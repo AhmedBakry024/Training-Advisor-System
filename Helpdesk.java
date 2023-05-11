@@ -1,5 +1,5 @@
 public class Helpdesk {
     public Helpdesk(){
-        System.out.println("Welcome to Questions zone");
+        System.out.println("Welcome to Questions zone\n");
     }
 }

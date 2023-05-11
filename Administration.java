@@ -14,7 +14,7 @@ public class Administration {
         String ID = input.nextLine();
         
         String prerequisites = new String();
-        System.out.println("Enter Course ID");
+        System.out.println("Enter Course Prerequisite");
         prerequisites=input.nextLine();
         System.out.println("Enter course cost: ");
         double cost = input.nextDouble();
