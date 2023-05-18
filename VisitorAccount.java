@@ -93,27 +93,4 @@ public class VisitorAccount {
         return userInput;
         
     }
-
-    public void Enroll(String id) {
-        for(int i = 0; i < App.coursesVector.size(); i++)
-        {
-            if(App.coursesVector.get(i).getCourseID().equals(id))
-            {
-                App.accounts.get(VisitorAccount.accountIndex).myCourses.add(App.coursesVector.get(i));
-                System.out.println("Course successfully enrolled");
-            }
-        }
-        
-    }
-
-    public void Withdraw(String id) {
-        for(int i = 0; i < App.accounts.get(VisitorAccount.accountIndex).myCourses.size(); i++)
-        {
-            if(App.accounts.get(VisitorAccount.accountIndex).myCourses.get(VisitorAccount.accountIndex).getCourseID().equals(id))
-            {
-                App.accounts.get(VisitorAccount.accountIndex).myCourses.remove(i);
-                System.out.println("Course successfully withdrawn");
-            }
-        }
-    }
 }

@@ -22,8 +22,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Training_Advisor_System/Training-Advisor-System",
-      "program": "d:/Training_Advisor_System/Training-Advisor-System/build/Debug/outDebug",
+      "cwd": "d:/Modeling Project/Training-Advisor-System",
+      "program": "d:/Modeling Project/Training-Advisor-System/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

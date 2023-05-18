@@ -47,32 +47,7 @@ public class Course {
         }
         return false;
     }
-    public void SearchCourse()
-    {
-        String name = new String();
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter course name: ");
-        name = input.nextLine();
-        name.toLowerCase();
-        for (int i = 0; i < App.coursesVector.size(); i++)
-        {
-            if (App.coursesVector.get(i).courseName.matches(name))
-            {
-                System.out.println("Course ID:  " + App.coursesVector.get(i).getCourseID());
-                System.out.println("Course name: " + App.coursesVector.get(i).getCourseName());
-                System.out.println("Course type: " + App.coursesVector.get(i).getCourseType());
-                System.out.println("Course prerequisites: " + App.coursesVector.get(i).getPrerequisites());
-                System.out.println("Course cost: " + App.coursesVector.get(i).getCourseCost());
-                System.out.println("Do you want to enroll in this course? Pass 1 for yes and 2 for no");
-                int choice = input.nextInt();
-                if (choice == 1)
-                {
-                    App.accounts.get(VisitorAccount.accountIndex).Enroll(App.coursesVector.get(i).getCourseID());
-                }
-
-            }
-        }
-    }
+    
 
     //Setters
     public void setCourseName(String name) {
@@ -124,20 +99,5 @@ public class Course {
         return prerequisite;
     }
 
-    public void progressTracking() {
-
-        System.out.println("You finished " + courseScore + " % of the course");
-        if (exam.getExam()) {
-            System.out.println("You finished the course exam");
-        }
-        else if (!exam.getExam()) {
-            System.out.println("You didn't finish the course exam");
-        }
-        if (exam.getQuiz()) {
-            System.out.println("You finished the course quiz");
-        }
-        else if (!exam.getQuiz()) {
-            System.out.println("You didn't finish the course quiz");
-        }
-    }
+ 
 }

@@ -66,6 +66,7 @@ public class App {
                                                 "If you want to track progress of a course press one, else press any other key");
                                         choice = scanner.nextInt();
                                         if (choice == 1) {
+                                            progressTracking pTracking = new progressTracking();
                                             System.out.println("Enter course ID");
                                             scanner.nextLine();
                                             String iDString = scanner.nextLine();
@@ -76,7 +77,9 @@ public class App {
                                                         .get(VisitorAccount.accountIndex).getCourseID()
                                                         .equals(iDString)) 
                                                 {
-                                                    accounts.get(VisitorAccount.accountIndex).myCourses.get(VisitorAccount.accountIndex).progressTracking();
+                                                    pTracking.progressTracking(
+                                                            accounts.get(VisitorAccount.accountIndex).myCourses
+                                                                    .get(VisitorAccount.accountIndex));
                                                 }
                                             }
 
@@ -84,26 +87,28 @@ public class App {
                                     }
                                     break;
                                 case 2:
-                                    Course courseSearch = new Course();
+                                    CourseSearch courseSearch = new CourseSearch();
                                     courseSearch.SearchCourse();
 
                                     break;
                                 case 3:
+                                    EnrollCourse enrollCourse = new EnrollCourse();
                                     System.out.println("Enter course ID");
                                     scanner.nextLine();
                                     id = scanner.nextLine();
                                     id.toUpperCase();
-                                    user.Enroll(id);
+                                    enrollCourse.Enroll(id);
                                     break;
                                 case 4:
                                     accounts.get(VisitorAccount.accountIndex).EditProfile();
                                     break;
                                 case 5:
+                                    WithdrawCourse withdrawCourse = new WithdrawCourse();
                                     System.out.println("Enter course ID");
                                     scanner.nextLine();
                                     id = scanner.nextLine();
                                     id.toUpperCase();
-                                    user.Withdraw(id);
+                                    withdrawCourse.Withdraw(id);
                                     break;
                                 case 6:
                                     accounts.get(VisitorAccount.accountIndex).viewdata();
