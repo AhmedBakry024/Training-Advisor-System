@@ -2,20 +2,16 @@ import java.util.*;
 
 public class App {
 
-    public static Vector<VisitorAccount> accounts = new Vector<VisitorAccount>();
-    public static VisitorAccount admins = new VisitorAccount();
-    public static Vector<Course> coursesVector = new Vector<Course>();
-    
-
     public static void main(String args[]) 
     {
+        Repository database = Repository.getInstance();
         Course course;
-        coursesVector.add(course = new Course("math 0", "Math", "MA12", "", 100.0, "material"));
-        coursesVector.add(course = new Course("math 1", "Math", "MA22", "math 0", 100.0, "material"));
-        admins.Email = "admin";
-        admins.Pass = "admin";
+        database.coursesVector.add(course = new Course("math 0", "Math", "MA12", "", 100.0, "material"));
+        database.coursesVector.add(course = new Course("math 1", "Math", "MA22", "math 0", 100.0, "material"));
+        database.admins.Email = "admin";
+        database.admins.Pass = "admin";
         String id;
-        VisitorAccount user = new VisitorAccount();
+        UserController user = new UserController();
         Scanner scanner = new Scanner(System.in);
         Administration admin = new Administration();
         boolean loopBreak = false;
@@ -28,13 +24,13 @@ public class App {
 
             switch (choice) {
                 case 1:
-                    accounts.add(user.Signup());
+                    database.accounts.add(user.Signup());
                     System.out.println("Signed up Successfully");
                     System.out.println();
                     user.Login();
                     loopBreak = false;
 
-                    if (VisitorAccount.accountIndex == -1) {
+                    if (database.accountIndex == -1) {
                         System.out.println("Wrong Email or password");
                     } else {
                         System.out.println("Logged in successfully \n\n");
@@ -48,38 +44,38 @@ public class App {
                                     loopBreak = true;
                                     break;
                                 case 1:
-                                    if (accounts.get(VisitorAccount.accountIndex).myCourses.size() < 1) 
+                                    if (database.accounts.get(database.accountIndex).myCourses.size() < 1) 
                                     {
                                         System.out.println("\nNo Registered courses\n\n");
                                     }
                                     else {
-                                        for (int i = 0; i < accounts.get(VisitorAccount.accountIndex).myCourses
+                                        for (int i = 0; i < database.accounts.get(database.accountIndex).myCourses
                                                 .size(); i++) {
                                             System.out.println("Course Name: "
-                                                    + accounts.get(VisitorAccount.accountIndex).myCourses.get(i)
+                                                    + database.accounts.get(database.accountIndex).myCourses.get(i)
                                                             .getCourseName());
                                             System.out.println(
-                                                    "Course ID: " + accounts.get(VisitorAccount.accountIndex).myCourses
+                                                    "Course ID: " + database.accounts.get(database.accountIndex).myCourses
                                                             .get(i).getCourseID());
                                         }
                                         System.out.println(
-                                                "If you want to track progress of a course press one, else press any other key");
+                                                "If you want to track progress of a course press 1, else press any other key");
                                         choice = scanner.nextInt();
                                         if (choice == 1) {
                                             progressTracking pTracking = new progressTracking();
                                             System.out.println("Enter course ID");
                                             scanner.nextLine();
                                             String iDString = scanner.nextLine();
-                                            for (int i = 0; i < accounts.get(VisitorAccount.accountIndex).myCourses
+                                            for (int i = 0; i < database.accounts.get(database.accountIndex).myCourses
                                                     .size(); i++) 
                                             {
-                                                if (accounts.get(VisitorAccount.accountIndex).myCourses
-                                                        .get(VisitorAccount.accountIndex).getCourseID()
+                                                if (database.accounts.get(database.accountIndex).myCourses
+                                                        .get(database.accountIndex).getCourseID()
                                                         .equals(iDString)) 
                                                 {
                                                     pTracking.progressTracking(
-                                                            accounts.get(VisitorAccount.accountIndex).myCourses
-                                                                    .get(VisitorAccount.accountIndex));
+                                                            database.accounts.get(database.accountIndex).myCourses
+                                                                    .get(i));
                                                 }
                                             }
 
@@ -92,7 +88,7 @@ public class App {
 
                                     break;
                                 case 3:
-                                    EnrollCourse enrollCourse = new EnrollCourse();
+                                    CourseController enrollCourse = new CourseController();
                                     System.out.println("Enter course ID");
                                     scanner.nextLine();
                                     id = scanner.nextLine();
@@ -100,10 +96,10 @@ public class App {
                                     enrollCourse.Enroll(id);
                                     break;
                                 case 4:
-                                    accounts.get(VisitorAccount.accountIndex).EditProfile();
+                                    user.EditProfile();
                                     break;
                                 case 5:
-                                    WithdrawCourse withdrawCourse = new WithdrawCourse();
+                                    CourseController withdrawCourse = new CourseController();
                                     System.out.println("Enter course ID");
                                     scanner.nextLine();
                                     id = scanner.nextLine();
@@ -111,16 +107,16 @@ public class App {
                                     withdrawCourse.Withdraw(id);
                                     break;
                                 case 6:
-                                    accounts.get(VisitorAccount.accountIndex).viewdata();
+                                    user.viewdata();
                                     break;
                                 case 7:
-                                    accounts.add(user.Signup());
+                                    database.accounts.add(user.Signup());
                                     System.out.println("Signed up Successfully");
                                     System.out.println();
                                     break;
                                 case 8:
                                     user.Login();
-                                    if (VisitorAccount.accountIndex == -1) {
+                                    if (database.accountIndex == -1) {
                                         System.out.println("Wrong Email or password");
                                     } else {
                                         System.out.println("Logged in successfully \n\n");
@@ -144,14 +140,14 @@ public class App {
                                             id = scanner.nextLine();
                                             id.toUpperCase();
 
-                                            for (int i = 0; i < accounts.get(VisitorAccount.accountIndex).myCourses
+                                            for (int i = 0; i < database.accounts.get(database.accountIndex).myCourses
                                                     .size(); i++) {
-                                                if (accounts.get(VisitorAccount.accountIndex).myCourses
+                                                if (database.accounts.get(database.accountIndex).myCourses
                                                         .get(i).getCourseID().equals(id)) {
-                                                    accounts.get(VisitorAccount.accountIndex).myCourses
+                                                            database.accounts.get(database.accountIndex).myCourses
                                                             .get(i).exam
                                                             .solveExam(
-                                                                    accounts.get(VisitorAccount.accountIndex).myCourses
+                                                                    database.accounts.get(database.accountIndex).myCourses
                                                                             .get(i)
                                                                             .getCourseScore());
                                                 }
@@ -163,14 +159,14 @@ public class App {
                                             id = scanner.nextLine();
                                             id.toUpperCase();
 
-                                            for (int i = 0; i < accounts.get(VisitorAccount.accountIndex).myCourses
+                                            for (int i = 0; i < database.accounts.get(database.accountIndex).myCourses
                                                     .size(); i++) {
-                                                if (accounts.get(VisitorAccount.accountIndex).myCourses
+                                                if (database.accounts.get(database.accountIndex).myCourses
                                                         .get(i).getCourseID().equals(id)) 
                                                         {
-                                                    accounts.get(VisitorAccount.accountIndex).myCourses.get(i).exam
+                                                            database.accounts.get(database.accountIndex).myCourses.get(i).exam
                                                             .solveQuiz(
-                                                                    accounts.get(VisitorAccount.accountIndex).myCourses.get(i)
+                                                                    database.accounts.get(database.accountIndex).myCourses.get(i)
                                                                             .getCourseScore());
                                                 }
                                             }
@@ -194,7 +190,7 @@ public class App {
                     inputUser = scanner.nextLine();
                     System.out.print("Enter the password: ");
                     inputPass = scanner.nextLine();
-                    if (inputPass.equals(admins.Pass) && inputUser.equals(admins.Email))
+                    if (inputPass.equals(database.admins.Pass) && inputUser.equals(database.admins.Email))
                     {
                         System.out.println("Logged up successfully");
                         while (loopBreak == false) {

@@ -10,6 +10,8 @@ public class Course {
     private String prerequisite = new String();
     public Exams exam = new Exams();
     public Materials materials;
+    Repository database = Repository.getInstance();
+
 
     public Course() {
         this.courseName = "course Name";
@@ -36,17 +38,7 @@ public class Course {
         this.courseCost = cost;
     }
 
-    public boolean Matching(String CourseName) {
-        String name;
-        for (int i = 0; i < App.coursesVector.size(); i++) {
-            name = App.coursesVector.get(i).getCourseName();
-            name = name.toLowerCase();
-            if (name.equals(CourseName)) {
-                return true;
-            }
-        }
-        return false;
-    }
+    
     
 
     //Setters

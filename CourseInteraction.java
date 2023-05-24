@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class CourseInteraction extends Course implements ICheck {
     private double score;
+    Repository database = Repository.getInstance();
 
     public CourseInteraction() {
         super();
@@ -14,16 +15,16 @@ public class CourseInteraction extends Course implements ICheck {
     }
 
     public void takingExam(String Id) {
-        for (int i = 0; i < App.coursesVector.size(); i++) {
-            if (App.coursesVector.get(i).getCourseID().equals(Id)) {
-                App.coursesVector.get(i).exam.solveExam(i);
+        for (int i = 0; i < database.coursesVector.size(); i++) {
+            if (database.coursesVector.get(i).getCourseID().equals(Id)) {
+                database.coursesVector.get(i).exam.solveExam(i);
             }
         }
     }
     public void takingQuiz(String Id) {
-        for (int i = 0; i < App.coursesVector.size(); i++) {
-            if (App.coursesVector.get(i).getCourseID().equals(Id)) {
-                App.coursesVector.get(i).exam.solveQuiz(i);
+        for (int i = 0; i < database.coursesVector.size(); i++) {
+            if (database.coursesVector.get(i).getCourseID().equals(Id)) {
+                database.coursesVector.get(i).exam.solveQuiz(i);
             }
         }
     }
@@ -33,12 +34,12 @@ public class CourseInteraction extends Course implements ICheck {
     }
 
     public boolean checkCost(String Id) {
-        for(int i=0;i<App.coursesVector.size();i++)
+        for(int i=0;i<database.coursesVector.size();i++)
         {
-            if(App.coursesVector.get(i).getCourseID().equals(Id))
+            if(database.coursesVector.get(i).getCourseID().equals(Id))
             {
-                if (App.coursesVector.get(i).getCourseCost() != 0) {
-                    System.out.println("You payed the course");
+                if (database.coursesVector.get(i).getCourseCost() != 0) {
+                    System.out.println("You paid for the course");
                     return true;
                 } else {
                     System.out.println("You didn't pay the course");
@@ -50,11 +51,11 @@ public class CourseInteraction extends Course implements ICheck {
     }
 
     public boolean checkScore(String Id) {
-        for(int i=0;i<App.coursesVector.size();i++)
+        for(int i=0;i<database.coursesVector.size();i++)
         {
-            if(App.coursesVector.get(i).getCourseID().equals(Id))
+            if(database.coursesVector.get(i).getCourseID().equals(Id))
             {
-                if (App.coursesVector.get(i).getCourseScore() >= 50) {
+                if (database.coursesVector.get(i).getCourseScore() >= 50) {
                     System.out.println("You passed the course");
                     return true;
                 } else {

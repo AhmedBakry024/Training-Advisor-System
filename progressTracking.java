@@ -2,7 +2,6 @@ public class progressTracking {
 
     public void progressTracking(Course course) {
 
-        System.out.println("You finished " + course.getCourseScore() + " % of the course");
         if (course.exam.getExam()) {
             System.out.println("You finished the course exam");
         }

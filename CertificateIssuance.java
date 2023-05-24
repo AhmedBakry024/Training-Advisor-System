@@ -4,14 +4,17 @@ import java.util.*;
 public class CertificateIssuance implements ICheck {
 
     Scanner scanner = new Scanner(System.in);
+    Repository database = Repository.getInstance();
+    
 
     public boolean checkCost(String Id) {
-        for(int i=0;i<App.coursesVector.size();i++)
+
+        for(int i=0;i<database.coursesVector.size();i++)
         {
-            if(App.coursesVector.get(i).getCourseID().equals(Id))
+            if(database.coursesVector.get(i).getCourseID().equals(Id))
             {
-                if (App.coursesVector.get(i).getCourseCost() != 0.0) {
-                    Double fee = App.coursesVector.get(i).getCourseCost();
+                if (database.coursesVector.get(i).getCourseCost() != 0.0) {
+                    Double fee = database.coursesVector.get(i).getCourseCost();
                     Payment payment = new Payment();
                     payment.paymentMethod(fee);
                     return true;
@@ -25,11 +28,11 @@ public class CertificateIssuance implements ICheck {
     }
 
     public boolean checkScore(String Id) {
-        for(int i=0;i<App.coursesVector.size();i++)
+        for(int i=0;i<database.coursesVector.size();i++)
         {
-            if(App.accounts.get(VisitorAccount.accountIndex).myCourses.get(i).getCourseID().equals(Id))
+            if(database.accounts.get(database.accountIndex).myCourses.get(i).getCourseID().equals(Id))
             {
-                if (App.accounts.get(VisitorAccount.accountIndex).myCourses.get(i).exam.getExam()) {
+                if (database.accounts.get(database.accountIndex).myCourses.get(i).exam.getExam()) {
                     System.out.println("You passed the course");
                     return true;
                 } else {
