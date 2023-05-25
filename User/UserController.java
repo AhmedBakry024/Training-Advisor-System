@@ -1,4 +1,7 @@
+package User;
+
 import java.util.*;
+import Database.Repository;
 
 public class UserController {
     Scanner scanner = new Scanner(System.in);

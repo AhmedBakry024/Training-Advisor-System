@@ -1,4 +1,8 @@
-import java.util.*;
+package CoursePackage;
+
+
+import Database.*;
+import CourseAdd_on.*;
 
 public class Course {
 

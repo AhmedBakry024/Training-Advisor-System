@@ -1,3 +1,8 @@
+package CoursePackage;
+
+import Database.*;
+
+
 public class CourseController {
     Repository database = Repository.getInstance();
 

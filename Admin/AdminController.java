@@ -1,6 +1,11 @@
+package Admin;
 import java.util.*;
 
-public class Administration {
+import CoursePackage.*;
+import Database.*;
+
+
+public class AdminController {
     private Course course;
     Repository database = Repository.getInstance();
 

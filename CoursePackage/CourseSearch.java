@@ -1,4 +1,7 @@
+package CoursePackage;
 import java.util.Scanner;
+
+import Database.Repository;
 
 public class CourseSearch 
 {

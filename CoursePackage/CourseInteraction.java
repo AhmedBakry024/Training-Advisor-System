@@ -1,4 +1,8 @@
-import java.util.Scanner;
+package CoursePackage;
+
+
+import Database.*;
+import CourseAdd_on.*;
 
 public class CourseInteraction extends Course implements ICheck {
     private double score;

@@ -1,5 +1,12 @@
 import java.util.*;
 
+import Admin.*;
+import ChatFeature.Helpdesk;
+import CoursePackage.*;
+import Database.*;
+import User.*;
+import CourseAdd_on.*;
+
 public class App {
 
     public static void main(String args[]) 
@@ -8,12 +15,10 @@ public class App {
         Course course;
         database.coursesVector.add(course = new Course("math 0", "Math", "MA12", "", 100.0, "material"));
         database.coursesVector.add(course = new Course("math 1", "Math", "MA22", "math 0", 100.0, "material"));
-        database.admins.Email = "admin";
-        database.admins.Pass = "admin";
         String id;
         UserController user = new UserController();
         Scanner scanner = new Scanner(System.in);
-        Administration admin = new Administration();
+        AdminController admin = new AdminController();
         boolean loopBreak = false;
         int choice;
         for (;;) 
@@ -190,7 +195,7 @@ public class App {
                     inputUser = scanner.nextLine();
                     System.out.print("Enter the password: ");
                     inputPass = scanner.nextLine();
-                    if (inputPass.equals(database.admins.Pass) && inputUser.equals(database.admins.Email))
+                    if (inputPass.equals(database.admins.password) && inputUser.equals(database.admins.userName))
                     {
                         System.out.println("Logged up successfully");
                         while (loopBreak == false) {

@@ -1,3 +1,6 @@
+package CourseAdd_on;
+import CoursePackage.*;
+
 public class progressTracking {
 
     public void progressTracking(Course course) {
